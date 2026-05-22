@@ -34,9 +34,24 @@
 
     html, body {
       height: 100%;
-      background-color: var(--bg);
       color: var(--cosmic-latte);
       font-family: 'Fieldstone', sans-serif;
+    }
+
+    html {
+      background-color: var(--bg);
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url('https://ajm-public-bucket.s3.us-east-1.amazonaws.com/GRAPHICS/PATTERN-6.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.35;
+      filter: blur(0.6px);
+      z-index: -1;
     }
 
     body {
@@ -67,11 +82,15 @@
     }
 
     header h1 {
+      position: relative;
+      display: inline-block;
       font-weight: 900;
       font-size: clamp(2.25rem, 7.5vw, 6rem);
       letter-spacing: -0.02em;
       color: var(--cosmic-latte);
-      text-shadow: 0 0 60px rgba(255, 248, 231, 0.08);
+      text-shadow:
+        -0.42px 0.21px 0px rgba(255, 0, 0, 0.7),
+        0.42px -0.21px 0px rgba(0, 255, 255, 0.7);
     }
 
     nav {
@@ -84,15 +103,16 @@
     }
 
     nav a {
-      font-family: 'Fieldstone', sans-serif;
-      font-weight: 500;
+      font-family: 'Libre Baskerville', serif;
+      font-weight: 400;
+      font-style: normal;
       font-size: clamp(0.75rem, 1.5vw, 1rem);
       letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--cosmic-latte);
       text-decoration: none;
       opacity: 0.7;
-      transition: opacity 0.2s ease, letter-spacing 0.2s ease;
+      transition: opacity 0.2s ease, letter-spacing 0.2s ease, font-style 0.2s ease;
     }
 
     .about-card {
@@ -110,11 +130,12 @@
       font-weight: 400;
       font-size: clamp(1rem, 1.5vw, 1.4rem);
       color: var(--cosmic-latte);
-      opacity: 0.85;
+      opacity: 0.35;
       letter-spacing: 0.01em;
     }
 
     nav a:hover {
+      font-style: italic;
       opacity: 1;
       letter-spacing: 0.35em;
     }
