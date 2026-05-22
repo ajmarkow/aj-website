@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AJ Markow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    @font-face {
+      font-family: 'Fieldstone';
+      src: url('https://ajm-public-bucket.s3.us-east-1.amazonaws.com/FONTS/Fieldstone-Heavy.otf') format('opentype');
+      font-weight: 900;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Fieldstone';
+      src: url('https://ajm-public-bucket.s3.us-east-1.amazonaws.com/FONTS/Fieldstone-Medium.otf') format('opentype');
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --cosmic-latte: #FFF8E7;
+      --bg: #1e1e1e;
+    }
+
+    html, body {
+      height: 100%;
+      background-color: var(--bg);
+      color: var(--cosmic-latte);
+      font-family: 'Fieldstone', sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 100vh;
+    }
+
+    header {
+      margin-top: 5vh;
+      text-align: center;
+    }
+
+    .name-block {
+      display: inline-flex;
+      align-items: center;
+      gap: 2vw;
+    }
+
+    .profile-pic {
+      height: clamp(2.59rem, 8.625vw, 6.9rem);
+      width: clamp(2.59rem, 8.625vw, 6.9rem);
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    header h1 {
+      font-weight: 900;
+      font-size: clamp(2.25rem, 7.5vw, 6rem);
+      letter-spacing: -0.02em;
+      color: var(--cosmic-latte);
+      text-shadow: 0 0 60px rgba(255, 248, 231, 0.08);
+    }
+
+    nav {
+      width: 100%;
+      padding: 2.5rem 0 3rem;
+      display: flex;
+      justify-content: center;
+      gap: clamp(2rem, 6vw, 6rem);
+      border-top: 1px solid rgba(255, 248, 231, 0.1);
+    }
+
+    nav a {
+      font-family: 'Fieldstone', sans-serif;
+      font-weight: 500;
+      font-size: clamp(0.75rem, 1.5vw, 1rem);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--cosmic-latte);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.2s ease, letter-spacing 0.2s ease;
+    }
+
+    .about-card {
+      width: 35vw;
+      height: 20vh;
+      border: 1px solid rgba(200, 200, 200, 0.3);
+      border-radius: 6px;
+      display: flex;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+    }
+
+    .about-card h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-weight: 400;
+      font-size: clamp(1rem, 1.5vw, 1.4rem);
+      color: var(--cosmic-latte);
+      opacity: 0.85;
+      letter-spacing: 0.01em;
+    }
+
+    nav a:hover {
+      opacity: 1;
+      letter-spacing: 0.35em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="name-block">
+      <img class="profile-pic" src="https://ajm-public-bucket.s3.us-east-1.amazonaws.com/PROFILE_PHOTOS/GRAYSCALE_AJMARKOW_PROFILE_PIC_1.jpg" alt="AJ Markow" />
+      <h1>AJ MARKOW</h1>
+    </div>
+  </header>
+
+  <div class="about-card">
+    <h2>about me</h2>
+  </div>
+
+  <nav>
+    <a href="#">Projects</a>
+    <a href="#">Resume</a>
+    <a href="#">Socials</a>
+  </nav>
+</body>
+</html>
