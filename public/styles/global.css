@@ -208,3 +208,65 @@ header h1 {
   opacity: 0.35;
   letter-spacing: 0.01em;
 }
+
+/* blog */
+
+.blog-feed {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 8dvw;
+}
+
+.blog-feed .empty {
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--cosmic-latte);
+  opacity: 0.4;
+  text-align: center;
+}
+
+.blog-feed .blog-post + .blog-post {
+  border-top: 1px solid rgba(255, 248, 231, 0.1);
+}
+
+.blog-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 0;
+}
+
+.blog-post {
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.blog-post h2 {
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.15rem;
+  text-align: left;
+}
+
+.blog-post time {
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  opacity: 0.5;
+}
+
+.blog-post .prose {
+  margin-top: 1.5rem;
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--cosmic-latte);
+}
+
+.blog-post .prose p {
+  margin-bottom: 1rem;
+}
