@@ -2,4 +2,77 @@
 import PageLayout from '../layouts/PageLayout.astro';
 ---
 <PageLayout title="Resume">
+  <div class="pdf-wrapper">
+    <div class="pdf-toolbar">
+      <a class="pdf-btn" href="https://ontheline.trincoll.edu/images/bookdown/sample-local-pdf.pdf" download>Download</a>
+    </div>
+    <div class="pdf-canvas-container" id="pdf-container"></div>
+  </div>
 </PageLayout>
+
+<style>
+  .pdf-wrapper {
+    width: 40vw;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .pdf-toolbar {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    padding-bottom: 1.5rem;
+  }
+
+  .pdf-btn {
+    font-family: 'Special Gothic Expanded One', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cosmic-latte);
+    text-decoration: none;
+    background: var(--bg);
+    padding: 0.6rem 1.2rem;
+    border: 1px solid rgba(255, 248, 231, 0.2);
+    border-radius: 999px;
+  }
+
+  .pdf-canvas-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .pdf-canvas-container canvas {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+</style>
+
+<script type="module">
+  const PDF_URL = 'https://ontheline.trincoll.edu/images/bookdown/sample-local-pdf.pdf';
+  const PDFJS_VERSION = '4.4.168';
+  const PDFJS_CDN = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${PDFJS_VERSION}`;
+
+  const { GlobalWorkerOptions, getDocument } = await import(`${PDFJS_CDN}/pdf.min.mjs`);
+  GlobalWorkerOptions.workerSrc = `${PDFJS_CDN}/pdf.worker.min.mjs`;
+
+  const container = document.getElementById('pdf-container');
+  const pdf = await getDocument(PDF_URL).promise;
+
+  for (let i = 1; i <= pdf.numPages; i++) {
+    const page = await pdf.getPage(i);
+    const viewport = page.getViewport({ scale: 1.5 });
+
+    const canvas = document.createElement('canvas');
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
+    container.appendChild(canvas);
+
+    await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+  }
+</script>

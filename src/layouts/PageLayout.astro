@@ -7,24 +7,54 @@ const { title } = Astro.props;
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#2d2b28" />
   <meta name="generator" content={Astro.generator} />
-  <title>{title} — AJ Markow</title>
+  <title>{title === 'AJ Markow' ? title : `${title} — AJ Markow`}</title>
   <link rel="stylesheet" href="/styles/global.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet" />
 </head>
 <body>
+  <header>
+    <div class="name-block">
+      <img class="profile-pic" src="https://ajm-public-bucket.s3.us-east-1.amazonaws.com/PROFILE_PHOTOS/GRAYSCALE_AJMARKOW_PROFILE_PIC_1.jpg" alt="A headshot of AJ Markow" loading="lazy" decoding="async" />
+      <a href="/" style="text-decoration:none;color:inherit"><h1>AJ MARKOW</h1></a>
+    </div>
+  </header>
+
   <main>
     <slot />
   </main>
 
-  <nav>
-    <a href="/">Home</a>
-    <a href="/projects">Projects</a>
-    <a href="/resume">Resume</a>
-    <a href="/socials">Socials</a>
+  <div class="pill-menu" id="pill-menu">
+    <div class="pill-links" id="pill-links">
+      <a href="/" class="pill-link">Home</a>
+      <a href="/projects" class="pill-link">Projects</a>
+      <a href="/resume" class="pill-link">Resume</a>
+      <a href="/socials" class="pill-link">Socials</a>
+    </div>
+    <button class="pill-toggle" id="pill-toggle">Menu</button>
+  </div>
+
+  <nav id="main-nav">
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/projects">Projects</a>
+      <a href="/resume">Resume</a>
+      <a href="/socials">Socials</a>
+    </div>
   </nav>
+
+  <script>
+    const pillToggle = document.getElementById('pill-toggle');
+    const pillMenu = document.getElementById('pill-menu');
+
+    pillToggle?.addEventListener('click', () => {
+      const isOpen = pillMenu?.classList.toggle('open');
+      if (pillToggle) pillToggle.textContent = isOpen ? '✕' : 'Menu';
+    });
+  </script>
 </body>
 </html>
