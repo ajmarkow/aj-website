@@ -19,11 +19,11 @@
 
 :root {
   --cosmic-latte: #FFF8E7;
-  --bg: #1e1e1e;
+  --bg: #0F1316;
 }
 
 html, body {
-  height: 100%;
+  min-height: 100lvh;
   color: var(--cosmic-latte);
   font-family: 'Fieldstone', sans-serif;
 }
@@ -35,21 +35,38 @@ html {
 body::before {
   content: '';
   position: fixed;
-  inset: 0;
-  background-image: url('https://ajm-public-bucket.s3.us-east-1.amazonaws.com/GRAPHICS/PATTERN-6.jpg');
+  top: calc(-1 * env(safe-area-inset-top, 0px) - 50px);
+  right: calc(-1 * env(safe-area-inset-right, 0px) - 50px);
+  bottom: calc(-1 * env(safe-area-inset-bottom, 0px) - 50px);
+  left: calc(-1 * env(safe-area-inset-left, 0px) - 50px);
+  background-image:
+    url('https://ajm-public-bucket.s3.us-east-1.amazonaws.com/WALLPAPERS/IPHONE_15_PRO_MAX/AJMARKOW_IPHONE_15_PRO_MAX_WALLPAPER_1_1290_BY_2796_BLURRED.png');
   background-size: cover;
   background-position: center;
-  opacity: 0.35;
-  filter: blur(9px);
+  background-repeat: no-repeat;
   z-index: -1;
+  pointer-events: none;
+}
+
+@media (min-width: 641px) {
+  body::before {
+    background-image:
+      linear-gradient(rgba(30, 30, 30, 0.65), rgba(30, 30, 30, 0.65)),
+      url('https://ajm-public-bucket.s3.us-east-1.amazonaws.com/WALLPAPERS/DESKTOP/AJMARKOW_WALLPAPER_1_4K.png');
+    filter: blur(12px);
+    top: -60px;
+    right: -60px;
+    bottom: -60px;
+    left: -60px;
+  }
 }
 
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  min-height: 100vh;
+  justify-content: flex-start;
+  min-height: 100dvh;
 }
 
 main {
@@ -123,7 +140,7 @@ nav a:hover {
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--cosmic-latte);
-    background: var(--bg);
+    background: #2A2F32;
     border: 1px solid rgba(255, 248, 231, 0.2);
     border-radius: 999px;
     padding: 0.6rem 1.2rem;
@@ -148,17 +165,23 @@ nav a:hover {
     text-transform: uppercase;
     color: var(--cosmic-latte);
     text-decoration: none;
-    background: var(--bg);
+    background: #2A2F32;
     border: 1px solid rgba(255, 248, 231, 0.2);
     border-radius: 999px;
     padding: 0.5rem 1rem;
+    transition: transform 0.2s ease;
+  }
+
+  .pill-link:hover {
+    transform: scale(1.15);
   }
 }
 
 /* index page */
 
 header {
-  margin-top: 8vh;
+  margin-top: 3dvh;
+  margin-bottom: 4dvh;
   text-align: center;
 }
 
@@ -207,6 +230,80 @@ header h1 {
   color: var(--cosmic-latte);
   opacity: 0.35;
   letter-spacing: 0.01em;
+}
+
+/* about */
+
+.about-section {
+  width: 100%;
+  padding: 0 8dvw;
+  max-width: 48rem;
+  margin: auto 0 auto;
+}
+
+.about-heading {
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  color: var(--cosmic-latte);
+}
+
+.about-section p {
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--cosmic-latte);
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.about-list {
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--cosmic-latte);
+  padding-left: 1.5rem;
+  columns: 2;
+  margin-bottom: 2rem;
+}
+
+.about-list.single {
+  columns: 1;
+}
+
+/* socials */
+
+.socials-card {
+  width: 35vw;
+  background-color: var(--bg);
+  border: 1px solid rgba(200, 200, 200, 0.3);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 3rem;
+  gap: 2.5rem;
+}
+
+.socials-card a {
+  color: var(--cosmic-latte);
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.socials-card a:hover {
+  opacity: 1;
+}
+
+.socials-card img {
+  width: clamp(2rem, 4vw, 3rem);
+  height: clamp(2rem, 4vw, 3rem);
+  filter: invert(1) sepia(0.1) saturate(0.5) brightness(1.05);
 }
 
 /* blog */
