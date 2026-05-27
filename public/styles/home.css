@@ -2,11 +2,11 @@
 
 .home-grid {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   justify-content: center;
   width: 100%;
   padding: 0 2dvw;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 /* Center column keeps the existing about-section sizing */
@@ -19,8 +19,16 @@
 /* Left / right columns are narrower */
 .home-left,
 .home-right {
-  flex: 0 0 clamp(12rem, 18vw, 18rem);
+  flex: 0 0 clamp(16.8rem, 25.2vw, 25.2rem);
   min-width: 0;
+}
+
+.home-left,
+.home-center,
+.home-right {
+  border: 1px solid rgba(255, 248, 231, 0.12);
+  border-radius: 0.5rem;
+  padding: 1.25rem;
 }
 
 /* On mobile collapse to single column */
@@ -47,6 +55,16 @@
 
 .stars-column {
   width: 100%;
+}
+
+.stars-subheading {
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: var(--cosmic-latte);
+  opacity: 0.35;
+  margin-top: -0.75rem;
+  margin-bottom: 1.25rem;
 }
 
 .stars-heading {
