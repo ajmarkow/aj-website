@@ -1,24 +1,38 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
+import GitHubStars from '../components/GitHubStars.astro';
 ---
 <PageLayout title="AJ Markow">
-  <div class="about-section">
-    <h2 class="about-heading">About Me</h2>
-    <p>Hi, my name is AJ Markow, welcome to my coding portfolio. I'm currently working at Recharge, the leading subscription software as a service. I've loved working with computers since I built my first Geocities site, and I'm fortunate to now do it for a living.</p>
-    <h2 class="about-heading">Languages & Tools</h2>
-    <ul class="about-list">
-      <li>JavaScript</li>
-      <li>Node.js</li>
-      <li>HTML & CSS</li>
-      <li>Ruby</li>
-      <li>Ruby on Rails</li>
-      <li>React</li>
-    </ul>
-    <h2 class="about-heading">Certifications</h2>
-    <ul class="about-list single">
-      <li>AWS Cloud Practitioner</li>
-      <li>Salesforce Administrator</li>
-      <li>Shopify Foundations</li>
-    </ul>
+  <link rel="stylesheet" href="/styles/home.css" slot="head" />
+  <div class="home-grid">
+    <div class="home-left">
+      <GitHubStars />
+    </div>
+
+    <div class="home-center">
+      <div class="about-section">
+        <h2 class="about-heading">About Me</h2>
+        <p>Hi, my name is AJ Markow, welcome to my coding portfolio. I'm currently working at Recharge, the leading subscription software as a service. I've loved working with computers since I built my first Geocities site, and I'm fortunate to now do it for a living.</p>
+        <h2 class="about-heading">Languages & Tools</h2>
+        <ul class="about-list">
+          <li>JavaScript</li>
+          <li>Node.js</li>
+          <li>HTML & CSS</li>
+          <li>Ruby</li>
+          <li>Ruby on Rails</li>
+          <li>React</li>
+        </ul>
+        <h2 class="about-heading">Certifications</h2>
+        <ul class="about-list single">
+          <li>AWS Cloud Practitioner</li>
+          <li>Salesforce Administrator</li>
+          <li>Shopify Foundations</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="home-right">
+      <!-- reserved for future content -->
+    </div>
   </div>
 </PageLayout>

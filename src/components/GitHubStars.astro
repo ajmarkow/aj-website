@@ -1,0 +1,45 @@
+---
+interface Star {
+  id: number;
+  full_name: string;
+  html_url: string;
+  description: string | null;
+  stargazers_count: number;
+  language: string | null;
+}
+
+let stars: Star[] = [];
+let error = false;
+
+try {
+  const res = await fetch('https://api.github.com/users/ajmarkow/starred?per_page=30&sort=created', {
+    headers: { 'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' }
+  });
+  if (res.ok) {
+    stars = await res.json();
+  } else {
+    error = true;
+  }
+} catch {
+  error = true;
+}
+---
+<aside class="stars-column">
+  <h2 class="stars-heading">Starred</h2>
+  {error && <p class="stars-empty">Couldn't load stars.</p>}
+  {!error && stars.length === 0 && <p class="stars-empty">No stars yet.</p>}
+  <ul class="stars-list">
+    {stars.map(repo => (
+      <li class="star-item">
+        <a href={repo.html_url} target="_blank" rel="noopener noreferrer" class="star-link">
+          {repo.full_name}
+        </a>
+        {repo.description && <p class="star-desc">{repo.description}</p>}
+        <div class="star-meta">
+          {repo.language && <span class="star-lang">{repo.language}</span>}
+          <span class="star-count">★ {repo.stargazers_count.toLocaleString()}</span>
+        </div>
+      </li>
+    ))}
+  </ul>
+</aside>

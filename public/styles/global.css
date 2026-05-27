@@ -236,19 +236,21 @@ header h1 {
 
 .about-section {
   width: 100%;
-  padding: 0 8dvw;
+  padding: 0 1.5rem;
   max-width: 48rem;
   margin: auto 0 auto;
 }
 
 .about-heading {
   font-family: 'Special Gothic Expanded One', sans-serif;
-  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  font-size: clamp(1rem, 1.5vw, 1.4rem);
   font-weight: 900;
-  letter-spacing: 0.05em;
-  margin-bottom: 1.5rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
   text-align: left;
   color: var(--cosmic-latte);
+  opacity: 0.7;
 }
 
 .about-section p {
