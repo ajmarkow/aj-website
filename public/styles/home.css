@@ -29,6 +29,9 @@
   border: 1px solid rgba(255, 248, 231, 0.12);
   border-radius: 0.5rem;
   padding: 1.25rem;
+  background: rgba(15, 19, 22, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 /* On mobile collapse to single column */
@@ -132,7 +135,7 @@
   font-size: 0.7rem;
   line-height: 1.5;
   color: var(--cosmic-latte);
-  opacity: 0.45;
+  opacity: 0.6;
   margin-top: 0.25rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -152,7 +155,7 @@
   font-size: 0.65rem;
   letter-spacing: 0.06em;
   color: var(--cosmic-latte);
-  opacity: 0.35;
+  opacity: 0.55;
 }
 
 .stars-empty {
