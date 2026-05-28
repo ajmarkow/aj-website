@@ -26,21 +26,43 @@ try {
 ---
 <aside class="stars-column">
   <h2 class="stars-heading">Starred</h2>
-  <p class="stars-subheading">Repos worth a look</p>
+  <p class="stars-subheading">A few GitHub repos I like</p>
   {error && <p class="stars-empty">Couldn't load stars.</p>}
   {!error && stars.length === 0 && <p class="stars-empty">No stars yet.</p>}
-  <ul class="stars-list">
-    {stars.map(repo => (
-      <li class="star-item">
-        <a href={repo.html_url} target="_blank" rel="noopener noreferrer" class="star-link">
-          {repo.full_name}
-        </a>
-        {repo.description && <p class="star-desc">{repo.description}</p>}
-        <div class="star-meta">
-          {repo.language && <span class="star-lang">{repo.language}</span>}
-          <span class="star-count">★ {repo.stargazers_count.toLocaleString()}</span>
-        </div>
-      </li>
-    ))}
-  </ul>
+  <div class="stars-scroll-wrapper">
+    <ul class="stars-list">
+      {stars.map(repo => (
+        <li class="star-item">
+          <a href={repo.html_url} target="_blank" rel="noopener noreferrer" class="star-link">
+            {repo.full_name}
+          </a>
+          {repo.description && <p class="star-desc">{repo.description}</p>}
+          <div class="star-meta">
+            {repo.language && <span class="star-lang">{repo.language}</span>}
+            <span class="star-count">★ {repo.stargazers_count.toLocaleString()}</span>
+          </div>
+        </li>
+      ))}
+    </ul>
+    <button class="stars-scroll-hint" aria-label="Scroll down" id="stars-scroll-hint">
+      <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
 </aside>
+
+<script>
+  const hint = document.getElementById('stars-scroll-hint');
+  const list = hint?.closest('.stars-scroll-wrapper')?.querySelector('.stars-list') as HTMLElement | null;
+  if (hint && list) {
+    hint.addEventListener('click', () => {
+      list.scrollBy({ top: 150, behavior: 'smooth' });
+    });
+    list.addEventListener('scroll', () => {
+      const atBottom = list.scrollHeight - list.scrollTop <= list.clientHeight + 4;
+      hint.style.opacity = atBottom ? '0' : '';
+      hint.style.pointerEvents = atBottom ? 'none' : '';
+    });
+  }
+</script>
