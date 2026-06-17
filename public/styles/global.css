@@ -27,6 +27,8 @@
   --border-active: rgba(255, 248, 231, 0.22);
   --muted: rgba(255, 248, 231, 0.45);
   --dim: rgba(255, 248, 231, 0.28);
+  --page-max: 64rem;
+  --page-pad: clamp(1.5rem, 4dvw, 3rem);
 }
 
 html {
@@ -311,8 +313,8 @@ header h1 {
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 0 8dvw;
-  max-width: 48rem;
+  padding: 0 var(--page-pad);
+  max-width: var(--page-max);
 }
 
 .blog-feed .empty {
