@@ -1,117 +1,102 @@
-/* Homepage 3-column grid — desktop only */
+/* Homepage layout */
 
 .home-grid {
   display: flex;
   align-items: stretch;
   justify-content: center;
   width: 100%;
-  padding: 0 2dvw;
-  gap: 3rem;
+  max-width: var(--page-max);
+  padding: 0 var(--page-pad);
+  gap: 1.5rem;
 }
 
-/* Center column keeps the existing about-section sizing */
+/* Left: starred repos */
+.home-left {
+  flex: 0 0 clamp(15rem, 22vw, 21rem);
+  min-width: 0;
+}
+
+/* Center: about */
 .home-center {
   flex: 1 1 0;
   min-width: 0;
-  max-width: 36rem;
-  display: flex;
-  flex-direction: column;
+  max-width: 40rem;
 }
 
-/* Left / right columns are narrower */
-.home-left,
+/* Right column is empty — suppress it rather than leaving a gap */
 .home-right {
-  flex: 0 0 clamp(16.8rem, 25.2vw, 25.2rem);
-  min-width: 0;
+  display: none;
 }
 
+/* Editorial card treatment — intensity B: brighter border + inset top highlight */
 .home-left,
-.home-center,
-.home-right {
-  border: 1px solid rgba(255, 248, 231, 0.12);
-  border-radius: 0.5rem;
-  padding: 1.25rem;
-  background: rgba(15, 19, 22, 0.55);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+.home-center {
+  border: 1px solid rgba(255, 248, 231, 0.14);
+  border-radius: 3px;
+  padding: 1.5rem;
+  background: var(--bg-raised);
+  box-shadow: inset 0 1px 0 rgba(255, 248, 231, 0.04);
+  transition: border-color 0.3s ease, transform 0.3s ease;
 }
 
-/* On mobile collapse to single column */
+@media (hover: hover) {
+  .home-left:hover,
+  .home-center:hover {
+    border-color: rgba(255, 248, 231, 0.28);
+    transform: translateY(-2px);
+  }
+}
+
+/* Stars column is sticky so it tracks as about-section scrolls */
+.home-left {
+  position: sticky;
+  top: 1rem;
+  align-self: flex-start;
+}
+
+/* Mobile: collapse to single column */
 @media (max-width: 900px) {
   .home-grid {
     flex-direction: column;
     align-items: stretch;
-    padding: 0 8dvw;
+    padding: 0 6dvw;
+    gap: 1rem;
   }
 
-  .home-left,
-  .home-right {
+  .home-left {
+    position: static;
+    flex: none;
+    width: 100%;
+  }
+
+  .home-center {
     flex: none;
     width: 100%;
   }
 }
 
-/* GitHub Stars column */
-
-.home-left {
-  position: sticky;
-  top: 1rem;
-}
+/* ---- GitHub Stars column ---- */
 
 .stars-column {
   width: 100%;
 }
 
-.stars-subheading {
-  font-family: 'Special Gothic Expanded One', sans-serif;
-  font-size: 0.7rem;
-  letter-spacing: 0.06em;
-  color: var(--cosmic-latte);
-  opacity: 0.35;
-  margin-top: -0.75rem;
-  margin-bottom: 1.25rem;
-}
-
 .stars-heading {
-  font-family: 'Special Gothic Expanded One', sans-serif;
-  font-size: clamp(1rem, 1.5vw, 1.4rem);
+  font-size: clamp(0.57rem, 0.9vw, 0.68rem);
   font-weight: 900;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--cosmic-latte);
-  opacity: 0.5;
-  margin-bottom: 1.25rem;
+  color: var(--ink);
+  opacity: 0.32;
+  margin-bottom: 0.5rem;
 }
 
-.stars-list {
-  list-style: none;
-  padding: 0;
-  padding-right: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  max-height: calc(6 * 5rem);
-  overflow-y: scroll;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 248, 231, 0.6) transparent;
-}
-
-.stars-list::-webkit-scrollbar {
-  width: 6px;
-}
-
-.stars-list::-webkit-scrollbar-track {
-  background: rgba(255, 248, 231, 0.08);
-  border-radius: 2px;
-}
-
-.stars-list::-webkit-scrollbar-thumb {
-  background: rgba(255, 248, 231, 0.5);
-  border-radius: 2px;
-}
-
-.stars-list::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 248, 231, 0.8);
+.stars-subheading {
+  font-size: 0.6rem;
+  letter-spacing: 0.07em;
+  color: var(--ink);
+  opacity: 0.26;
+  margin-bottom: 1rem;
 }
 
 .stars-scroll-wrapper {
@@ -121,55 +106,66 @@
   align-items: center;
 }
 
-.stars-scroll-hint {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: rgba(255, 248, 231, 0.4);
-  padding: 0.25rem 0;
-  animation: bounce 2s ease-in-out infinite;
-  transition: opacity 0.3s ease;
+.stars-list {
+  list-style: none;
+  padding: 0;
+  padding-right: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: calc(6 * 4.875rem);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 248, 231, 0.22) transparent;
 }
 
-.stars-scroll-hint:hover {
-  color: rgba(255, 248, 231, 0.8);
+.stars-list::-webkit-scrollbar {
+  width: 2px;
 }
 
-@keyframes bounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(3px); }
+.stars-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.stars-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 248, 231, 0.22);
+  border-radius: 1px;
+}
+
+.stars-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 248, 231, 0.5);
 }
 
 .star-item {
-  padding: 0.75rem 0;
-  border-bottom: 1px solid rgba(255, 248, 231, 0.08);
+  padding: 0.625rem 0;
+  border-bottom: 1px solid rgba(255, 248, 231, 0.07);
 }
 
 .star-item:first-child {
-  border-top: 1px solid rgba(255, 248, 231, 0.08);
+  border-top: 1px solid rgba(255, 248, 231, 0.07);
 }
 
 .star-link {
-  font-family: 'Special Gothic Expanded One', sans-serif;
-  font-size: 0.8rem;
-  letter-spacing: 0.04em;
-  color: var(--cosmic-latte);
+  font-size: 0.775rem;
+  letter-spacing: 0.02em;
+  color: var(--ink);
   text-decoration: none;
   word-break: break-word;
+  opacity: 0.82;
+  display: block;
   transition: opacity 0.15s ease;
 }
 
 .star-link:hover {
-  opacity: 0.7;
+  opacity: 0.48;
 }
 
 .star-desc {
-  font-family: 'Special Gothic Expanded One', sans-serif;
-  font-size: 0.7rem;
-  line-height: 1.5;
-  color: var(--cosmic-latte);
-  opacity: 0.6;
-  margin-top: 0.25rem;
+  font-size: 0.67rem;
+  line-height: 1.55;
+  color: var(--ink);
+  opacity: 0.48;
+  margin-top: 0.2rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -179,21 +175,32 @@
 .star-meta {
   display: flex;
   gap: 0.75rem;
-  margin-top: 0.35rem;
+  margin-top: 0.28rem;
 }
 
 .star-lang,
 .star-count {
-  font-family: 'Special Gothic Expanded One', sans-serif;
-  font-size: 0.65rem;
-  letter-spacing: 0.06em;
-  color: var(--cosmic-latte);
-  opacity: 0.55;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  opacity: 0.36;
+}
+
+.stars-scroll-hint {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 248, 231, 0.28);
+  padding: 0.35rem 0 0;
+  transition: color 0.2s ease;
+}
+
+.stars-scroll-hint:hover {
+  color: rgba(255, 248, 231, 0.65);
 }
 
 .stars-empty {
-  font-family: 'Special Gothic Expanded One', sans-serif;
-  font-size: 0.8rem;
-  opacity: 0.4;
-  color: var(--cosmic-latte);
+  font-size: 0.72rem;
+  opacity: 0.3;
+  color: var(--ink);
 }

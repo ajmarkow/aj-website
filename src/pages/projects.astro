@@ -2,4 +2,73 @@
 import PageLayout from '../layouts/PageLayout.astro';
 ---
 <PageLayout title="Projects">
+  <link rel="stylesheet" href="/styles/projects.css" slot="head" />
+
+  <div class="projects-feed">
+
+    <!-- Featured project -->
+    <article class="project-featured">
+      <div class="project-img-wrap featured">
+        <img
+          src="https://picsum.photos/seed/merchant-analytics/800/400"
+          alt="Merchant Analytics Dashboard"
+          loading="eager"
+          decoding="async"
+        />
+      </div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag">React</span>
+          <span class="project-tag">Ruby on Rails</span>
+          <span class="project-tag">PostgreSQL</span>
+        </div>
+        <h2 class="project-title">Merchant Analytics Dashboard</h2>
+        <p class="project-desc">A real-time dashboard giving e-commerce merchants visibility into subscription revenue, churn, and cohort retention. Built at Recharge to surface growth metrics that were previously buried in raw data exports.</p>
+      </div>
+    </article>
+
+    <!-- Supporting projects -->
+    <div class="projects-subgrid">
+      <article class="project-sub">
+        <div class="project-img-wrap sub">
+          <img
+            src="https://picsum.photos/seed/cli-dev-tooling/400/220"
+            alt="CLI Dev Tooling"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag">Ruby</span>
+            <span class="project-tag">Shell</span>
+            <span class="project-tag">Git</span>
+          </div>
+          <h2 class="project-title">CLI Dev Tooling</h2>
+          <p class="project-desc">Opinionated scaffolding and automation for Ruby service development. Reduces new service setup from hours to minutes.</p>
+        </div>
+      </article>
+
+      <article class="project-sub">
+        <div class="project-img-wrap sub">
+          <img
+            src="https://picsum.photos/seed/api-gateway-layer/400/220"
+            alt="API Gateway Layer"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag">Rails</span>
+            <span class="project-tag">AWS</span>
+            <span class="project-tag">Redis</span>
+          </div>
+          <h2 class="project-title">API Gateway Layer</h2>
+          <p class="project-desc">Rate-limiting and auth middleware for Shopify integrations. Handles token refresh, request queuing, and graceful degradation under load.</p>
+        </div>
+      </article>
+    </div>
+
+  </div>
 </PageLayout>
