@@ -5,8 +5,8 @@
   align-items: stretch;
   justify-content: center;
   width: 100%;
-  max-width: 72rem;
-  padding: 0 2.5dvw;
+  max-width: var(--page-max);
+  padding: 0 var(--page-pad);
   gap: 1.5rem;
 }
 

@@ -2,8 +2,8 @@
 
 .projects-feed {
   width: 100%;
-  max-width: 52rem;
-  padding: 0 4dvw;
+  max-width: var(--page-max);
+  padding: 0 var(--page-pad);
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -123,7 +123,7 @@
 /* Mobile */
 @media (max-width: 640px) {
   .projects-feed {
-    padding: 0 6dvw;
+    padding: 0 var(--page-pad);
   }
 
   .projects-subgrid {
