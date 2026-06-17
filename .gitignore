@@ -28,3 +28,6 @@ agent-analyzer-report.json
 
 # brainstorming session files
 .superpowers/
+
+# playwright mcp
+.playwright-mcp/
