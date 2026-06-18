@@ -1,0 +1,41 @@
+.links-page {
+  width: 100%;
+  max-width: var(--page-max);
+  padding: 0 var(--page-pad) 4rem;
+}
+
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.links-section-title {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+  color: var(--color-muted, #888);
+}
+
+.links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.links-item {
+  font-size: 0.9rem;
+  color: var(--color-text, inherit);
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity 0.15s;
+}
+
+.links-item:hover {
+  opacity: 1;
+  text-decoration: underline;
+}

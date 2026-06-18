@@ -1,0 +1,136 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+
+const sections = [
+  {
+    title: 'APIs',
+    links: [
+      { label: 'restfulapi.net', href: 'https://restfulapi.net/' },
+      { label: 'openapi.tools', href: 'https://openapi.tools/' },
+      { label: 'swagger.io/docs', href: 'https://swagger.io/docs/' },
+    ],
+  },
+  {
+    title: 'Blogs',
+    links: [
+      { label: 'lea.verou.me', href: 'https://lea.verou.me/' },
+      { label: 'github.blog', href: 'https://github.blog/' },
+      { label: 'devblast.com', href: 'https://devblast.com/' },
+    ],
+  },
+  {
+    title: 'Books',
+    links: [
+      { label: 'wizardzines.com', href: 'https://wizardzines.com/' },
+    ],
+  },
+  {
+    title: 'Communities',
+    links: [
+      { label: 'Discord Go-Phers', href: 'https://discord.gg/3ckDFg' },
+      { label: 'gitter.im', href: 'https://gitter.im/home/explore' },
+    ],
+  },
+  {
+    title: 'Design',
+    links: [
+      { label: 'coolors.co', href: 'https://coolors.co/' },
+      { label: 'Free Fonts & Vectors', href: 'https://www.fgdesigners.com/' },
+      { label: 'typeroom.eu', href: 'https://www.typeroom.eu/' },
+    ],
+  },
+  {
+    title: 'Games & Challenges',
+    links: [
+      { label: 'Ruby Warrior', href: 'https://www.bloc.io/ruby-warrior#/' },
+      { label: 'cryptozombies.io', href: 'https://cryptozombies.io/' },
+      { label: 'hackerearth.com', href: 'https://www.hackerearth.com/' },
+      { label: 'edabit.com/challenges', href: 'https://edabit.com/challenges' },
+    ],
+  },
+  {
+    title: 'General Help',
+    links: [
+      { label: 'stanza.dev', href: 'https://stanza.dev/' },
+      { label: 'devhints.io', href: 'https://devhints.io/' },
+      { label: '12factor.net', href: 'https://12factor.net/' },
+      { label: 'w3schools.com', href: 'https://www.w3schools.com/' },
+      { label: 'tldr.ostera.io', href: 'https://tldr.ostera.io/' },
+    ],
+  },
+  {
+    title: 'Jobs',
+    links: [
+      { label: 'hunter.io', href: 'https://hunter.io/' },
+    ],
+  },
+  {
+    title: 'Ruby',
+    links: [
+      { label: 'graphql-ruby.org', href: 'https://graphql-ruby.org/' },
+      { label: 'rubygems.org', href: 'https://rubygems.org/' },
+      { label: 'ruby-doc.org', href: 'https://ruby-doc.org/' },
+      { label: 'betterspecs.org', href: 'https://www.betterspecs.org/' },
+    ],
+  },
+  {
+    title: 'Testing',
+    links: [
+      { label: 'jestjs.io', href: 'https://jestjs.io/en/' },
+      { label: 'sorbet.org', href: 'https://sorbet.org/' },
+    ],
+  },
+  {
+    title: 'Tips',
+    links: [
+      { label: 'jstips.co', href: 'https://www.jstips.co/' },
+    ],
+  },
+  {
+    title: 'Tools',
+    links: [
+      { label: 'searchcode.com', href: 'https://searchcode.com/' },
+      { label: 'carbon.now.sh', href: 'https://carbon.now.sh/' },
+      { label: 'dbdiagram.io', href: 'https://dbdiagram.io/home' },
+      { label: 'glitterly.app', href: 'https://www.glitterly.app' },
+      { label: 'expo.io', href: 'https://expo.io/' },
+      { label: 'chartjs.org', href: 'https://www.chartjs.org/' },
+      { label: 'rubular.com', href: 'https://rubular.com/' },
+    ],
+  },
+  {
+    title: 'Tutorials',
+    links: [
+      { label: 'ohshitgit.com', href: 'https://ohshitgit.com/' },
+      { label: 'think-like-a-git.net', href: 'http://think-like-a-git.net/' },
+      { label: 'jsforcats.com', href: 'http://jsforcats.com/' },
+      { label: 'laracasts.com', href: 'https://laracasts.com' },
+    ],
+  },
+  {
+    title: 'JSON & YAML',
+    links: [],
+  },
+];
+---
+<PageLayout title="Links">
+  <link rel="stylesheet" href="/styles/links.css" slot="head" />
+  <div class="links-page">
+    <div class="links-grid">
+      {sections.filter(s => s.links.length > 0).map((section) => (
+        <div class="links-section">
+          <h2 class="links-section-title">{section.title}</h2>
+          <ul class="links-list">
+            {section.links.map((link) => (
+              <li>
+                <a href={link.href} target="_blank" rel="noopener noreferrer" class="links-item">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</PageLayout>
