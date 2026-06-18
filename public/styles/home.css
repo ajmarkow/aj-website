@@ -18,7 +18,7 @@
 
 /* 3-col subgrid: left stack (Resource Hub + Brewpub), right 2-wide stars */
 .home-subgrid {
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 3fr 1fr 1fr;
   grid-template-rows: auto auto;
 }
 
@@ -29,9 +29,9 @@
 /* ---- Bio / About section ---- */
 
 .home-bio {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
   width: 100%;
   border: 1px solid rgba(255, 248, 231, 0.14);
   border-radius: 3px;
@@ -51,6 +51,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  justify-content: center;
 }
 
 .home-bio-prose p {
@@ -92,11 +93,12 @@
   transform: translateY(-1px);
 }
 
-/* Skills — two columns below the bio prose, monospace data register */
+/* Skills — two sub-columns within the left half of the bio card */
 .home-bio-skills {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.75rem 3rem;
+  gap: 1.75rem 2rem;
+  align-content: center;
 }
 
 .skill-group-heading {
@@ -125,7 +127,24 @@
 
 /* ---- GitHub Stars card ---- */
 
+.home-stars-card {
+  position: relative;
+}
+
+/* Absolutely fills the card so stars don't affect grid row sizing */
+.stars-fill {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
 .stars-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
   width: 100%;
   padding: 0.9rem 1.1rem 1.1rem;
 }
@@ -149,20 +168,22 @@
 }
 
 .stars-scroll-wrapper {
+  flex: 1;
+  min-height: 0;
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .stars-list {
+  flex: 1;
+  min-height: 0;
   list-style: none;
   padding: 0;
   padding-right: 0.25rem;
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-height: calc(6 * 4.875rem);
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 248, 231, 0.22) transparent;
@@ -260,8 +281,12 @@ body.loaded .home-projects-feed {
     gap: 2rem;
   }
 
-  .home-bio-skills {
+  .home-bio {
     grid-template-columns: 1fr;
+  }
+
+  .home-bio-skills {
+    grid-template-columns: 1fr 1fr;
   }
 
   .home-subgrid {

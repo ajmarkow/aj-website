@@ -10,10 +10,6 @@ import GitHubStars from '../components/GitHubStars.astro';
 
     <!-- Bio -->
     <section class="home-bio">
-      <div class="home-bio-prose">
-        <p>Software engineer at <a href="https://rechargepayments.com" target="_blank" rel="noopener noreferrer">Recharge</a>, where I help merchants grow through subscription commerce. It started with a <a href="https://en.wikipedia.org/wiki/IMac_G4" target="_blank" rel="noopener noreferrer">first Mac</a> and Geocities. I've been building for the web ever since.</p>
-        <a class="resume-link" href="/resume">Resume</a>
-      </div>
       <div class="home-bio-skills">
         <div class="skill-group">
           <h3 class="skill-group-heading">Languages &amp; Tools</h3>
@@ -35,12 +31,17 @@ import GitHubStars from '../components/GitHubStars.astro';
           </ul>
         </div>
       </div>
+      <div class="home-bio-prose">
+        <p>Software engineer at <a href="https://rechargepayments.com" target="_blank" rel="noopener noreferrer">Recharge</a>, where I help merchants grow through subscription commerce. It started with a <a href="https://en.wikipedia.org/wiki/IMac_G4" target="_blank" rel="noopener noreferrer">first Mac</a> and Geocities. I've been building for the web ever since.</p>
+        <a class="resume-link" href="/resume">Resume</a>
+      </div>
     </section>
 
     <!-- Projects -->
     <div class="projects-feed home-projects-feed">
 
       <article class="project-featured">
+        <a class="project-card-link" href="https://rubygems.org/gems/snippet_cli" target="_blank" rel="noopener noreferrer" aria-label="Snippet CLI on RubyGems"></a>
         <div class="project-img-wrap featured">
           <img
             src="https://picsum.photos/seed/snippet-cli-terminal-ruby/800/400"
@@ -64,6 +65,7 @@ import GitHubStars from '../components/GitHubStars.astro';
 
         <!-- Left col top -->
         <article class="project-sub">
+          <a class="project-card-link" href="https://resource-hub.ajm.codes/" target="_blank" rel="noopener noreferrer" aria-label="Resource Hub"></a>
           <div class="project-img-wrap sub">
             <img
               src="https://picsum.photos/seed/resource-hub-aws-serverless/400/220"
@@ -85,6 +87,7 @@ import GitHubStars from '../components/GitHubStars.astro';
 
         <!-- Left col bottom -->
         <article class="project-sub">
+          <a class="project-card-link" href="https://firstreactapp.ajm.codes/" target="_blank" rel="noopener noreferrer" aria-label="Brewpub"></a>
           <div class="project-img-wrap sub">
             <img
               src="https://picsum.photos/seed/brewpub-beer-react-app/400/220"
@@ -105,7 +108,9 @@ import GitHubStars from '../components/GitHubStars.astro';
 
         <!-- Right col: stars spanning both rows -->
         <article class="project-sub home-stars-card">
-          <GitHubStars />
+          <div class="stars-fill">
+            <GitHubStars />
+          </div>
         </article>
 
       </div>

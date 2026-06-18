@@ -9,9 +9,17 @@
   gap: 1.5rem;
 }
 
+/* Full-card link overlay */
+.project-card-link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
 /* Card base — shared by featured and sub */
 .project-featured,
 .project-sub {
+  position: relative;
   border: 1px solid rgba(255, 248, 231, 0.14);
   border-radius: 3px;
   background: rgba(255, 248, 231, 0.022);
