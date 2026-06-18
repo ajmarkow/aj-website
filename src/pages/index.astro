@@ -3,36 +3,113 @@ import PageLayout from '../layouts/PageLayout.astro';
 import GitHubStars from '../components/GitHubStars.astro';
 ---
 <PageLayout title="AJ Markow">
+  <link rel="stylesheet" href="/styles/projects.css" slot="head" />
   <link rel="stylesheet" href="/styles/home.css" slot="head" />
-  <div class="home-grid">
-    <div class="home-left">
-      <GitHubStars />
-    </div>
 
-    <div class="home-center">
-      <div class="about-section">
-        <h2 class="about-heading">About Me</h2>
-        <p>I'm AJ Markow, a software engineer and tech enthusiast. It all started when I got my <a href="https://en.wikipedia.org/wiki/IMac_G4" target="_blank" rel="noopener noreferrer">first Mac</a>. From then on, I knew working with computers was for me, and was soon building Geocities sites whilst learning CSS. At Recharge, I help merchants grow their businesses through solving tough technical challenges.</p>
-        <h2 class="about-heading">Languages & Tools</h2>
-        <ul class="about-list">
-          <li>JavaScript</li>
-          <li>Node.js</li>
-          <li>HTML & CSS</li>
-          <li>Ruby</li>
-          <li>Ruby on Rails</li>
-          <li>React</li>
-        </ul>
-        <h2 class="about-heading">Certifications</h2>
-        <ul class="about-list single">
-          <li>AWS Cloud Practitioner</li>
-          <li>Salesforce Administrator</li>
-          <li>Shopify Foundations</li>
-        </ul>
+  <div class="home-container">
+
+    <!-- Bio -->
+    <section class="home-bio">
+      <div class="home-bio-prose">
+        <p>Software engineer at <a href="https://rechargepayments.com" target="_blank" rel="noopener noreferrer">Recharge</a>, where I help merchants grow through subscription commerce. It started with a <a href="https://en.wikipedia.org/wiki/IMac_G4" target="_blank" rel="noopener noreferrer">first Mac</a> and Geocities. I've been building for the web ever since.</p>
+        <a class="resume-link" href="/resume">Resume</a>
+      </div>
+      <div class="home-bio-skills">
+        <div class="skill-group">
+          <h3 class="skill-group-heading">Languages &amp; Tools</h3>
+          <ul class="skill-list">
+            <li>JavaScript</li>
+            <li>Node.js</li>
+            <li>HTML &amp; CSS</li>
+            <li>Ruby</li>
+            <li>Ruby on Rails</li>
+            <li>React</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3 class="skill-group-heading">Certifications</h3>
+          <ul class="skill-list">
+            <li>AWS Cloud Practitioner</li>
+            <li>Salesforce Administrator</li>
+            <li>Shopify Foundations</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <div class="projects-feed home-projects-feed">
+
+      <article class="project-featured">
+        <div class="project-img-wrap featured">
+          <img
+            src="https://picsum.photos/seed/snippet-cli-terminal-ruby/800/400"
+            alt="Snippet CLI terminal interface"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag">Ruby</span>
+            <span class="project-tag">RubyGems</span>
+            <span class="project-tag">CLI</span>
+          </div>
+          <h2 class="project-title">Snippet CLI</h2>
+          <p class="project-desc">A Ruby command-line tool for Espanso snippet management, published to RubyGems with 19,000+ downloads. Create, search, and sync text expansion snippets from the terminal.</p>
+        </div>
+      </article>
+
+      <div class="projects-subgrid home-subgrid">
+
+        <!-- Left col top -->
+        <article class="project-sub">
+          <div class="project-img-wrap sub">
+            <img
+              src="https://picsum.photos/seed/resource-hub-aws-serverless/400/220"
+              alt="Resource Hub application"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="project-tag">React</span>
+              <span class="project-tag">AWS Lambda</span>
+              <span class="project-tag">DynamoDB</span>
+            </div>
+            <h2 class="project-title">Resource Hub</h2>
+            <p class="project-desc">Serverless React app on AWS using Lambda, DynamoDB, Cognito, S3, and Amplify. Authenticated access to a curated developer learning collection.</p>
+          </div>
+        </article>
+
+        <!-- Left col bottom -->
+        <article class="project-sub">
+          <div class="project-img-wrap sub">
+            <img
+              src="https://picsum.photos/seed/brewpub-beer-react-app/400/220"
+              alt="Brewpub React application"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="project-tag">React</span>
+              <span class="project-tag">Tailwind CSS</span>
+            </div>
+            <h2 class="project-title">Brewpub</h2>
+            <p class="project-desc">React SPA demonstrating state and props management with a brewery-themed interface styled in Tailwind CSS.</p>
+          </div>
+        </article>
+
+        <!-- Right col: stars spanning both rows -->
+        <article class="project-sub home-stars-card">
+          <GitHubStars />
+        </article>
+
       </div>
     </div>
 
-    <div class="home-right">
-      <!-- reserved for future content -->
-    </div>
   </div>
 </PageLayout>

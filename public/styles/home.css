@@ -1,84 +1,133 @@
-/* Homepage layout */
+/* Home page — portfolio layout */
 
-.home-grid {
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
+.home-container {
   width: 100%;
   max-width: var(--page-max);
-  padding: 0 var(--page-pad);
+  padding: 0 var(--page-pad) 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* Strip projects-feed outer constraints — home-container owns the width */
+.home-projects-feed {
+  width: 100%;
+  max-width: none;
+  padding: 0;
+}
+
+/* 3-col subgrid: left stack (Resource Hub + Brewpub), right 2-wide stars */
+.home-subgrid {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
+}
+
+.home-subgrid > *:nth-child(1) { grid-column: 1; grid-row: 1; }
+.home-subgrid > *:nth-child(2) { grid-column: 1; grid-row: 2; }
+.home-stars-card               { grid-column: 2 / 4; grid-row: 1 / 3; }
+
+/* ---- Bio / About section ---- */
+
+.home-bio {
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
-}
-
-/* Left: starred repos */
-.home-left {
-  flex: 0 0 clamp(15rem, 22vw, 21rem);
-  min-width: 0;
-}
-
-/* Center: about */
-.home-center {
-  flex: 1 1 0;
-  min-width: 0;
-  max-width: 50rem;
-}
-
-/* Right column is empty — suppress it rather than leaving a gap */
-.home-right {
-  display: none;
-}
-
-/* Editorial card treatment — intensity B: brighter border + inset top highlight */
-.home-left,
-.home-center {
+  width: 100%;
   border: 1px solid rgba(255, 248, 231, 0.14);
   border-radius: 3px;
-  padding: 1.5rem;
   background: var(--bg-raised);
   box-shadow: inset 0 1px 0 rgba(255, 248, 231, 0.04);
-  transition: border-color 0.3s ease, transform 0.3s ease;
+  padding: 1.75rem;
+  transition: border-color 0.3s ease;
 }
 
 @media (hover: hover) {
-  .home-left:hover,
-  .home-center:hover {
-    border-color: rgba(255, 248, 231, 0.28);
-    transform: translateY(-2px);
+  .home-bio:hover {
+    border-color: rgba(255, 248, 231, 0.24);
   }
 }
 
-/* Stars column is sticky so it tracks as about-section scrolls */
-.home-left {
-  position: sticky;
-  top: 1rem;
+.home-bio-prose {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.home-bio-prose p {
+  font-size: 0.875rem;
+  line-height: 1.95;
+  color: var(--ink);
+  opacity: 0.82;
+}
+
+.home-bio-prose p a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255, 248, 231, 0.3);
+  transition: text-decoration-color 0.2s ease, font-style 0.1s;
+}
+
+.home-bio-prose p a:hover {
+  font-style: italic;
+  text-decoration-color: rgba(255, 248, 231, 0.75);
+}
+
+.resume-link {
   align-self: flex-start;
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border: 1px solid rgba(255, 248, 231, 0.22);
+  border-radius: 999px;
+  padding: 0.5rem 1.1rem;
+  transition: border-color 0.2s ease, transform 0.15s ease;
 }
 
-/* Mobile: collapse to single column */
-@media (max-width: 900px) {
-  .home-grid {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 0 6dvw;
-    gap: 1rem;
-  }
-
-  .home-left {
-    position: static;
-    flex: none;
-    width: 100%;
-  }
-
-  .home-center {
-    flex: none;
-    width: 100%;
-  }
+.resume-link:hover {
+  border-color: rgba(255, 248, 231, 0.5);
+  transform: translateY(-1px);
 }
 
-/* ---- GitHub Stars column ---- */
+/* Skills — two columns below the bio prose, monospace data register */
+.home-bio-skills {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.75rem 3rem;
+}
+
+.skill-group-heading {
+  font-size: clamp(0.57rem, 0.9vw, 0.68rem);
+  font-weight: 900;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink);
+  opacity: 0.32;
+  margin-bottom: 0.55rem;
+}
+
+.skill-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.22rem;
+  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8rem;
+  line-height: 1.75;
+  color: var(--ink);
+  opacity: 0.65;
+}
+
+
+/* ---- GitHub Stars card ---- */
 
 .stars-column {
   width: 100%;
+  padding: 0.9rem 1.1rem 1.1rem;
 }
 
 .stars-heading {
@@ -88,7 +137,7 @@
   text-transform: uppercase;
   color: var(--ink);
   opacity: 0.32;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
 }
 
 .stars-subheading {
@@ -96,7 +145,7 @@
   letter-spacing: 0.07em;
   color: var(--ink);
   opacity: 0.26;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .stars-scroll-wrapper {
@@ -119,25 +168,13 @@
   scrollbar-color: rgba(255, 248, 231, 0.22) transparent;
 }
 
-.stars-list::-webkit-scrollbar {
-  width: 2px;
-}
-
-.stars-list::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.stars-list::-webkit-scrollbar-thumb {
-  background: rgba(255, 248, 231, 0.22);
-  border-radius: 1px;
-}
-
-.stars-list::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 248, 231, 0.5);
-}
+.stars-list::-webkit-scrollbar { width: 2px; }
+.stars-list::-webkit-scrollbar-track { background: transparent; }
+.stars-list::-webkit-scrollbar-thumb { background: rgba(255, 248, 231, 0.22); border-radius: 1px; }
+.stars-list::-webkit-scrollbar-thumb:hover { background: rgba(255, 248, 231, 0.5); }
 
 .star-item {
-  padding: 0.625rem 0;
+  padding: 0.6rem 0;
   border-bottom: 1px solid rgba(255, 248, 231, 0.07);
 }
 
@@ -146,8 +183,9 @@
 }
 
 .star-link {
-  font-size: 0.775rem;
-  letter-spacing: 0.02em;
+  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.01em;
   color: var(--ink);
   text-decoration: none;
   word-break: break-word;
@@ -156,16 +194,15 @@
   transition: opacity 0.15s ease;
 }
 
-.star-link:hover {
-  opacity: 0.48;
-}
+.star-link:hover { opacity: 0.45; }
 
 .star-desc {
-  font-size: 0.67rem;
-  line-height: 1.55;
+  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-size: 0.65rem;
+  line-height: 1.5;
   color: var(--ink);
-  opacity: 0.48;
-  margin-top: 0.2rem;
+  opacity: 0.45;
+  margin-top: 0.18rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -174,16 +211,18 @@
 
 .star-meta {
   display: flex;
-  gap: 0.75rem;
-  margin-top: 0.28rem;
+  gap: 0.65rem;
+  margin-top: 0.22rem;
 }
 
 .star-lang,
 .star-count {
-  font-size: 0.6rem;
+  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.58rem;
   letter-spacing: 0.08em;
   color: var(--ink);
-  opacity: 0.36;
+  opacity: 0.34;
 }
 
 .stars-scroll-hint {
@@ -191,16 +230,54 @@
   border: none;
   cursor: pointer;
   color: rgba(255, 248, 231, 0.28);
-  padding: 0.35rem 0 0;
+  padding: 0.3rem 0 0;
   transition: color 0.2s ease;
 }
 
-.stars-scroll-hint:hover {
-  color: rgba(255, 248, 231, 0.65);
-}
+.stars-scroll-hint:hover { color: rgba(255, 248, 231, 0.65); }
 
 .stars-empty {
   font-size: 0.72rem;
   opacity: 0.3;
   color: var(--ink);
+}
+
+/* ---- Entry animations ---- */
+
+body.loaded .home-bio {
+  animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 280ms both;
+}
+
+body.loaded .home-projects-feed {
+  animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 420ms both;
+}
+
+/* ---- Mobile ---- */
+
+@media (max-width: 640px) {
+  .home-container {
+    padding-bottom: 2.5rem;
+    gap: 2rem;
+  }
+
+  .home-bio-skills {
+    grid-template-columns: 1fr;
+  }
+
+  .home-subgrid {
+    grid-template-columns: 1fr;
+    grid-template-rows: unset;
+  }
+
+  .home-subgrid > *:nth-child(1),
+  .home-subgrid > *:nth-child(2),
+  .home-stars-card {
+    grid-column: unset;
+    grid-row: unset;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.loaded .home-bio,
+  body.loaded .home-projects-feed { animation: none; }
 }
